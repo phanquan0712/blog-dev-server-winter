@@ -35,7 +35,7 @@ io.on('connection', (socket: Socket) => {
 
 
 // Routes
-app.use('/api', routes.authRoute);
+app.use('/api', routes.authRoute);  
 app.use('/api', routes.userRoute);
 app.use('/api', routes.categoryRoute);
 app.use('/api', routes.blogRoute);
@@ -47,13 +47,6 @@ app.use('/api', routes.commentRoute);
 import './config/database';
 
 
-// Production Deploy
-if (process.env.NODE_ENV === 'production') {
-   app.use(express.static('client/build'))
-   app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, '../client', 'build', 'index.html'))
-   })
-}
 
 
 // Server listening
